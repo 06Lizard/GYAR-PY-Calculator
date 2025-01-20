@@ -46,35 +46,25 @@ class Math:
     def calculate(exp):
         exp = exp.replace(" ", "")
         operators = '+-*/^'
-                
-        for op in operators:
-            if op in exp:
-                parts = exp.split(op)
-                if len(parts) != 2:
-                    return "Invalid expression"
-                
-                operand1 = float(parts[0])
-                operand2 = float(parts[1])
+        
+        try:
+            for op in operators:
+                if op in exp:
+                    parts = exp.split(op)
+                    if len(parts) != 2:
+                        return "Invalid expression"
+                    
+                    operand1 = float(parts[0])
+                    operand2 = float(parts[1])
 
-                operations = {
-                    '+': Math.add,
-                    '-': Math.sub,
-                    '*': Math.multi,
-                    '/': Math.divi,
-                    '^': Math.pow,
-                }
+                    operations = {
+                        '+': Math.add,
+                        '-': Math.sub,
+                        '*': Math.multi,
+                        '/': Math.divi,
+                        '^': Math.pow,
+                    }
 
-                return operations[op](operand1, operand2)
-
-##                if op == '+': 
-##                    return Math.add(operand1, operand2)
-##                elif op == '-':
-##                    return Math.sub(operand1, operand2)
-##                elif op == '*':
-##                    return Math.multi(operand1, operand2)
-##                elif op == '/':
-##                    return Math.divi(operand1, operand2)
-##                elif op == '^':
-##                    return Math.pow(operand1, operand2)
-                
-        return "No valid operator found"  # If no operator is found                                        
+                    return operations[op](operand1, operand2)
+        except Exception as e:
+            return float('nan')
